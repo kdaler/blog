@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/Home";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import About from "./pages/About";
+import Navbar from "./components/Navbar";
+import PostDetail from "./pages/PostDetail";
 
 function App() {
+    // const users = [
+    //     {name: "John"},
+    //     {name: "Bob"},
+    // ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+      <div className="App">
+        <Navbar/>
+        <Switch>
+          <>
+            <div className={'content'}>
+              <Route exact={true} path={"/"} component={Home} />
+              <Route exact={true} path={"/about"} component={About} />
+              <Route exact={true} path={"/post/:id"} component={PostDetail} />
+            </div>
+          </>
+        </Switch>
+      </div>
+    </Router>
+    // <div className="App">
+    //   <Home usersList={users}/>
+    // </div>
   );
 }
 
